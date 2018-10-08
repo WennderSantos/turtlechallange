@@ -1,0 +1,43 @@
+name:                turtleChallange
+version:             0.1.0.0
+github:              "wenndersantos/turtleChallange"
+license:             BSD3
+author:              "Wennder dos Santos"
+maintainer:          "wennder.santos@outlook.com"
+copyright:           "2018 Wennder dos Santos"
+
+extra-source-files:
+- README.md
+
+description:         Please see the README on GitHub at <https://github.com/wenndersantos/turtleChallange#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- aeson
+- hspec
+- bytestring
+
+library:
+  source-dirs: src
+
+executables:
+  turtleChallange-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - turtleChallange
+
+tests:
+  turtleChallange-test:
+    main:                MovementSpec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - turtleChallange
