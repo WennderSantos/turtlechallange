@@ -34,7 +34,7 @@ data Board = Board { boardSize :: Position
 
 instance FromJSON Board
 
-data Move = Move | Rotate deriving (Generic, Show, Eq)
+data Move = Forward | Rotate deriving (Generic, Show, Eq)
 instance FromJSON Move
 
 data Moves = Moves [Move] deriving (Generic, Show, Eq)
