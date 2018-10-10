@@ -1,4 +1,4 @@
-# Project Title
+# Tutle Challenge
 Turtle challenge is a board game simulation which, by reading settings in two files, a turtle should walk through a board trying to get to the exit point without hitting any mine.
 
 # The stack
@@ -18,13 +18,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
+Stack
+
 ```
-Stack - curl -sSL https://get.haskellstack.org/ | sh
+curl -sSL https://get.haskellstack.org/ | sh
 ```
 This is generally enough, but you can also find more information about stack on its website https://docs.haskellstack.org/en/stable/README/
 
 
 ### Setup the compiler
+In the project root, run
 ```
 stack setup
 ```
@@ -36,19 +39,18 @@ stack test
 ```
 
 ### Running the application from the source code
+This command will install an executable binary of the app in `.stack-work/install/{name/version_of_your_so}/lts-12.12/compiler_version/bin`
 
 ```
 stack build
 ```
-
-This command will install an executable binary of the app in `.stack-work/install/{name/version_of_your_so}/lts-12.12/compiler_version/bin`
 
 To run the app, you have to call the executable generated passing the config files. There are two files ready to use in `/file-samples`. Follow an example of the command to run the app (using my machine).
 ```
 .stack-work/install/x86_64-osx/lts-12.12/8.4.3/bin/turtleChallange-exe /file-samples/gameSettings /file-samples/moves
 ```
 
-The run command will result in a log of sequences, containing the result of each action read of moves file.
+This command will result in a log of sequences, containing the result of each action read of moves file.
 
 # Code and design decisions
 As this is a small exercise, I decided to put all the types needed in one file `Board` just to simplify.
