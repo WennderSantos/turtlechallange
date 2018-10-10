@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/WennderSantos/turtlechallange.svg?branch=master)](https://travis-ci.org/WennderSantos/turtlechallange)
+
 # Tutle Challenge
 Turtle challenge is a board game simulation which, by reading settings in two files, a turtle should walk through a board trying to get to the exit point without hitting any mine.
 
