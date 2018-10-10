@@ -50,7 +50,8 @@ To run the app, you have to call the executable generated passing the config fil
 .stack-work/install/x86_64-osx/lts-12.12/8.4.3/bin/turtleChallange-exe /file-samples/gameSettings /file-samples/moves
 ```
 
-This command will result in a log of sequences, containing the result of each action read of moves file.
+This command will result in a log of sequences, containing the result of each action read from moves file. Follow an example of the result using the setting files in `/file-samples`.
+![Sequences log](/file-samples/game-result.png)
 
 # Code and design decisions
 As this is a small exercise, I decided to put all the types needed in one file `Board` just to simplify.
