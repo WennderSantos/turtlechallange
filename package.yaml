@@ -33,7 +33,7 @@ executables:
 
 tests:
   turtleChallange-test:
-    main:                MovementSpec.hs
+    main:                Test.hs
     source-dirs:         test
     ghc-options:
     - -threaded

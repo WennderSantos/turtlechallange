@@ -6,36 +6,41 @@ module Data.Board where
 import Data.List
 import GHC.Generics
 import Data.Aeson
+import Data.Typeable
 
 data Position = Position { x :: Int
                          , y :: Int} deriving (Generic, Show, Eq)
 
 instance FromJSON Position
 
-newtype Mine = Mine Position deriving (Generic, Show, Eq)
-
-instance FromJSON Mine
-
-data FaceDirection = North | East | South | West deriving (Generic, Show, Eq)
+data FaceDirection = North | East | South | West deriving (Enum, Generic, Show, Eq)
 
 instance FromJSON FaceDirection
 
-data Turtle = Turtle { position :: Position
+type TurtlePosition = Position
+
+data Turtle = Turtle { position :: TurtlePosition
                      , faceDirection :: FaceDirection
                      } deriving (Generic, Show, Eq)
 
 instance FromJSON Turtle
 
-data Board = Board { boardSize :: Position
-                   , exitPoint :: Position
+type BoardSize = Position
+type ExitPoint = Position
+type Mine = Position
+
+data Board = Board { boardSize :: BoardSize
+                   , exitPoint :: ExitPoint
                    , mines :: [Mine]
                    , turtle :: Turtle
                    } deriving (Generic, Show, Eq)
 
 instance FromJSON Board
 
-data Move = Forward | Rotate deriving (Generic, Show, Eq)
-instance FromJSON Move
+data Action = Move | Rotate deriving (Enum, Generic, Show, Eq)
 
-data Moves = Moves [Move] deriving (Generic, Show, Eq)
-instance FromJSON Moves
+instance FromJSON Action
+
+data MoveResult = Success | MineHit | MoveOutsideBoard | Saved deriving (Enum, Show, Eq)
+
+type ActionLog = String

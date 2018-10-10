@@ -4,7 +4,7 @@ import System.Environment
 import qualified Data.ByteString.Lazy.Char8 as C
 import Data.Board
 import Data.Aeson
-import Movement
+import Action
 
 main :: IO ()
 main = do
@@ -13,8 +13,12 @@ main = do
     [gameSettingsFilePath, movesFilePath]
       -> do
         gameSettingsJson <- readFile gameSettingsFilePath
-        let currentBoard = (decode $ C.pack gameSettingsJson :: Maybe Board)
+        let maybeBoard = (decode $ C.pack gameSettingsJson :: Maybe Board)
         movesJson <- readFile movesFilePath
-        let moves = (decode $ C.pack movesJson :: Maybe Moves)
-        mapM_ putStrLn (doMovements currentBoard moves)
+        let maybeMoves = (decode $ C.pack movesJson :: Maybe [Action])
+        case maybeBoard of
+          Nothing -> putStrLn "Failed trying to parse gameSettings file"
+          Just board -> case maybeMoves of
+            Nothing -> putStrLn "Failed trying to parse moves file"
+            Just moves -> mapM_ putStrLn (getGameResult board moves)
     _ -> putStrLn "Missing file paths"
