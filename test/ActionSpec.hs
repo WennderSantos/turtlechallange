@@ -1,8 +1,8 @@
 module ActionSpec where
 
-import Test.Hspec
-import Data.Board
 import Action
+import Data.Board
+import Test.Hspec
 
 turtlepositionx2y2 = Position {x = 2, y = 2}
 turtlepositionx8y8 = Position {x = 8, y = 8}

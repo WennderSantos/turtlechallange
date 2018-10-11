@@ -1,7 +1,7 @@
 module TurtleSpec where
 
-import Test.Hspec
 import Data.Board
+import Test.Hspec
 import Turtle
 
 turtlePositionx1y2 = Position {x = 1, y = 2}

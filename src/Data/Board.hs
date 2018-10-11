@@ -1,12 +1,12 @@
-{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DeriveGeneric         #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 
 module Data.Board where
 
-import Data.List
-import GHC.Generics
 import Data.Aeson
+import Data.List
 import Data.Typeable
+import GHC.Generics
 
 data Position = Position { x :: Int
                          , y :: Int} deriving (Generic, Show, Eq)
@@ -19,7 +19,7 @@ instance FromJSON FaceDirection
 
 type TurtlePosition = Position
 
-data Turtle = Turtle { position :: TurtlePosition
+data Turtle = Turtle { position      :: TurtlePosition
                      , faceDirection :: FaceDirection
                      } deriving (Generic, Show, Eq)
 
@@ -31,8 +31,8 @@ type Mine = Position
 
 data Board = Board { boardSize :: BoardSize
                    , exitPoint :: ExitPoint
-                   , mines :: [Mine]
-                   , turtle :: Turtle
+                   , mines     :: [Mine]
+                   , turtle    :: Turtle
                    } deriving (Generic, Show, Eq)
 
 instance FromJSON Board
