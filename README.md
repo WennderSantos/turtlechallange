@@ -4,7 +4,7 @@
 Turtle challenge is a board game simulation which, by reading settings in two files, a turtle should walk through a board trying to get to the exit point without hitting any mine.
 
 # The stack
-The language I've chosen is Haskell, a strongly typed functional language. Haskell has one of the most powerful type system I know and also a very helpful pattern matching. As I already had written Haskell (in my studies) some time ago, I decided to use it here because of these two features I mentioned before.
+The language I've chosen was Haskell, a strongly typed functional language. Haskell has one of the most powerful type system I know and also a very helpful pattern matching. As I already had written Haskell (in my studies) some time ago, I decided to use it here because of these two features I mentioned before.
 
 The project is using Stack as a build tool and package manager.
 
@@ -14,7 +14,7 @@ Besides the config files to run the game, I am not using anything to maintain st
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+After clone the project, the instructions bellow will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Setting up the Stack environment
 
@@ -41,13 +41,13 @@ stack test
 ```
 
 ### Running the application from the source code
-This command will install an executable binary of the app in `.stack-work/install/{name/version_of_your_so}/lts-12.12/compiler_version/bin`
+This command will install an executable binary of the app in `.stack-work/install/{name/version_of_your_so}/lts-12.12/{compiler_version}/bin`
 
 ```
 stack build
 ```
 
-To run the app, you have to call the executable generated passing the config files. There are two files ready to use in `/file-samples`. Follow an example of the command to run the app (using my machine).
+To run the app, you have to call the executable generated passing the config files. There are two files ready to use in `/file-samples`. Follow an example of the command to run the app (in my machine).
 ```
 .stack-work/install/x86_64-osx/lts-12.12/8.4.3/bin/turtleChallange-exe /file-samples/gameSettings /file-samples/moves
 ```
@@ -57,7 +57,7 @@ stack exec turtleChallange-exe /file-samples/gameSettings /file-samples/moves
 ```
 Both commands will print the same output.
 
-This command will result in a log of sequences, containing the result of each action read from moves file. Follow an example of the result using the setting files in `/file-samples`.
+Follow an example of the result after run the application using the setting files in `/file-samples`.
 ![Sequences log](/file-samples/game-result.png)
 
 # Code and design decisions
@@ -72,6 +72,6 @@ As I already said before, I choose Haskell because of its type system and its pa
 During the code, I had to assume one business decision. The project will always stop and print the log when:
 * Turtle hits a mine
 * Turtle gets to the exit point
-* Turtle move outside the board
+* Turtle moves outside the board
 
 In a real project, this is a decision that should be talked to business people, I just wanted to show that.
