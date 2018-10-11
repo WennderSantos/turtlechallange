@@ -51,6 +51,11 @@ To run the app, you have to call the executable generated passing the config fil
 ```
 .stack-work/install/x86_64-osx/lts-12.12/8.4.3/bin/turtleChallange-exe /file-samples/gameSettings /file-samples/moves
 ```
+or, you can also run
+```
+stack exec turtleChallange-exe /file-samples/gameSettings /file-samples/moves
+```
+Both commands will print the same output.
 
 This command will result in a log of sequences, containing the result of each action read from moves file. Follow an example of the result using the setting files in `/file-samples`.
 ![Sequences log](/file-samples/game-result.png)
