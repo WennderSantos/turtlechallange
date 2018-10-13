@@ -18,16 +18,6 @@ turtleFacingEast = Turtle {position = turtlepositionx2y2, faceDirection = East}
 turtleFacingSouth = Turtle {position = turtlepositionx2y2, faceDirection = South}
 turtleFacingWest = Turtle {position = turtlepositionx2y2, faceDirection = West}
 
-actionLogStillInDanger = ["Sequence 1: Success!", "Sequence 2: Success!", "Sequence 3: Still in danger!"]
-actionLogTurtleSaved = ["Sequence 1: Success!", "Sequence 2: Success!", "Sequence 3: Success!", "Sequence 4: Success!", "Sequence 5: Success!", "Sequence 6: Success!", "Sequence 7: Yay, turtle is safe!"]
-actionLogTurtleHitingAMine = ["Sequence 1: Success!", "Sequence 2: Mine Hit!"]
-
-boardSettings = Board {boardSize = boardSizex6y6, exitPoint = exitPointx5y5, mines = minesx1y2x3y2, turtle = turtleFacingNorth}
-
-actionsTurtleStillInDanger = [Move, Move, Move]
-actionsTurtleSafe = [Move, Move, Move, Rotate, Move, Move, Move]
-actionsTurtleHitingAMine = [Rotate, Move]
-
 spec :: Spec
 spec = do
   describe "execute action Rotate" $ do
@@ -59,23 +49,3 @@ spec = do
       getActionResult Move turtlepositionx1y2 exitPointx5y5 boardSizex6y6 minesx1y2x3y2 `shouldBe` MineHit
     it "for action Move resulting in a turtle position in the same tile as the exit point shoulbe be Saved" $ do
       getActionResult Move turtlepositionx5y5 exitPointx5y5 boardSizex6y6 minesx1y2x3y2 `shouldBe` Saved
-
-  describe "getGameResult" $ do
-    it "Should the turtle still be in danger" $ do
-      getGameResult boardSettings actionsTurtleStillInDanger `shouldBe` actionLogStillInDanger
-    it "Should the turtle be safe" $ do
-      getGameResult boardSettings actionsTurtleSafe `shouldBe` actionLogTurtleSaved
-    it "Should the turtle hit a mine" $ do
-      getGameResult boardSettings actionsTurtleHitingAMine `shouldBe` actionLogTurtleHitingAMine
-
-  describe "logFor" $ do
-    it "Success" $ do
-      logFor Success `shouldBe` ["Success!"]
-    it "MineHit" $ do
-      logFor MineHit `shouldBe` ["Mine Hit!"]
-    it "MoveOutsideBoard" $ do
-      logFor MoveOutsideBoard `shouldBe` ["Move outside the board is an invalid action!"]
-    it "Saved" $ do
-      logFor Saved `shouldBe` ["Yay, turtle is safe!"]
-    it "StillInDanger" $ do
-      logFor StillInDanger `shouldBe` ["Still in danger!"]

@@ -43,4 +43,5 @@ instance FromJSON Action
 
 data ActionResult = Success | MineHit | MoveOutsideBoard | Saved | StillInDanger deriving (Enum, Show, Eq)
 
-type ActionLog = String
+type ActionResultDescription = String
+type GameResult = [String]

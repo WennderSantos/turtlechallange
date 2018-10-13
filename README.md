@@ -63,7 +63,7 @@ Follow an example of the result after run the application using the setting file
 # Code and design decisions
 As this is a small exercise, I decided to put all the types needed in one file `Board` just to simplify.
 
-All the code that "do something" is in the files `Action` and `Turtle` each of them dealing with things related to their names.
+All the code that "do something" is in the files `Action` and `Turtle` each of them dealing with things related to their names. The code in `GameResult` file is responsible to create the result of the actions which will be sequentially printed on the screen.
 
 I am very new to functional programming and I am very excited to learn about code designs using it.
 

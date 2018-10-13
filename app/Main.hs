@@ -1,10 +1,10 @@
 module Main where
 
-import           System.Environment
-import qualified Data.ByteString.Lazy.Char8    as C
-import           Data.Board
 import           Data.Aeson
-import           Action
+import           Data.Board
+import qualified Data.ByteString.Lazy.Char8 as C
+import           GameResult                 (getGameResult)
+import           System.Environment
 
 main :: IO ()
 main = do

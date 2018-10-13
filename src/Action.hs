@@ -5,29 +5,17 @@ module Action where
 import Data.Board
 import Turtle
 
-getGameResult :: Board -> [Action] -> [ActionLog]
-getGameResult board actions = do
-  let actionsLog = actionHandler board actions []
-  zipWith (++) ["Sequence " ++ show id ++ ": " | id <-  [1..length actionsLog]] actionsLog
-
-actionHandler :: Board -> [Action] -> [ActionLog] -> [ActionLog]
-actionHandler _ [] actionsLog = (init actionsLog) ++ logFor StillInDanger
+actionHandler :: Board -> [Action] -> [ActionResult] -> [ActionResult]
+actionHandler _ [] actionsLog = (init actionsLog) ++ [StillInDanger]
 
 actionHandler Board {boardSize, turtle, exitPoint, mines} actions actionsLog = do
   let action = (head actions)
   let turtleAfterAction = executeAction action turtle
   case getActionResult action (position turtleAfterAction) exitPoint boardSize mines of
-    Success -> actionHandler Board {boardSize, turtle = turtleAfterAction, exitPoint, mines} (tail actions) (actionsLog ++ logFor Success)
-    MineHit -> actionsLog ++ logFor MineHit
-    MoveOutsideBoard -> actionsLog ++ logFor MoveOutsideBoard
-    Saved -> actionsLog ++ logFor Saved
-
-logFor :: ActionResult -> [ActionLog]
-logFor Success          = ["Success!"]
-logFor MineHit          = ["Mine Hit!"]
-logFor MoveOutsideBoard = ["Move outside the board is an invalid action!"]
-logFor Saved            = ["Yay, turtle is safe!"]
-logFor StillInDanger    = ["Still in danger!"]
+    Success -> actionHandler Board {boardSize, turtle = turtleAfterAction, exitPoint, mines} (tail actions) (actionsLog ++ [Success])
+    MineHit -> actionsLog ++ [MineHit]
+    MoveOutsideBoard -> actionsLog ++ [MoveOutsideBoard]
+    Saved -> actionsLog ++ [Saved]
 
 getActionResult :: Action -> TurtlePosition -> ExitPoint -> BoardSize -> [Mine] -> ActionResult
 getActionResult Rotate _ _ _ _ = Success
