@@ -41,6 +41,6 @@ data Action = Move | Rotate deriving (Enum, Generic, Show, Eq)
 
 instance FromJSON Action
 
-data MoveResult = Success | MineHit | MoveOutsideBoard | Saved deriving (Enum, Show, Eq)
+data ActionResult = Success | MineHit | MoveOutsideBoard | Saved | StillInDanger deriving (Enum, Show, Eq)
 
 type ActionLog = String

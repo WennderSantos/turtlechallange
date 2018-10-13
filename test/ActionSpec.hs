@@ -67,3 +67,15 @@ spec = do
       getGameResult boardSettings actionsTurtleSafe `shouldBe` actionLogTurtleSaved
     it "Should the turtle hit a mine" $ do
       getGameResult boardSettings actionsTurtleHitingAMine `shouldBe` actionLogTurtleHitingAMine
+
+  describe "logFor" $ do
+    it "Success" $ do
+      logFor Success `shouldBe` ["Success!"]
+    it "MineHit" $ do
+      logFor MineHit `shouldBe` ["Mine Hit!"]
+    it "MoveOutsideBoard" $ do
+      logFor MoveOutsideBoard `shouldBe` ["Move outside the board is an invalid action!"]
+    it "Saved" $ do
+      logFor Saved `shouldBe` ["Yay, turtle is safe!"]
+    it "StillInDanger" $ do
+      logFor StillInDanger `shouldBe` ["Still in danger!"]
