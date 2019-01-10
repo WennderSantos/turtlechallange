@@ -3,6 +3,44 @@
 # Tutle Challenge
 Turtle challenge is a board game simulation which, by reading settings in two files, a turtle should walk through a board trying to get to the exit point without hitting any mine.
 
+## File settings
+### gameSettings
+
+```
+{
+  "boardSize": {"x": 6, "y": 6},
+  "exitPoint": {"x": 5, "y": 1},
+  "mines": [{"x": 0, "y": 0}, {"x": 0, "y": 3}, {"x": 1, "y": 3}, {"x": 2, "y": 1}, {"x": 2, "y": 2}, {"x": 3, "y": 2}, {"x": 3, "y": 3}],
+  "turtle": {
+    "position": {"x": 0, "y": 1},
+    "faceDirection": "East"
+  }
+}
+```
+This file contains all the configuration needed to construct a board and start the game.
+
+A **board** has a **boardSize** which is described by an `x y` point indicating its last square. In the example above, the positions inside the board go from `x: 0 y: 0` to `x:5 y: 5`.
+
+The **exitPoint** also uses a point `x y ` to describe the exit of the board.
+
+**mines** describe all the positions in the board containing a mine.
+
+**turtle** describes the position of a turtle and to where its face is turned.
+
+**faceDirection** is an enumerator that can contain the following values: `East - West - South - North`.
+
+### moves
+
+```
+["Move", "Rotate", "Move", "Rotate", "Rotate", "Rotate", "Move", "Move", "Move", "Move", "Rotate", "Rotate", "Rotate", "Move"]
+```
+
+This file contains the instructions to the turtle. The moves objective is to get the turtle to the **exitPoint** without hit any **mine**.
+
+**Move** move one point to the front, which will depend on where the turtles face is facing (**faceDirection**). Example: a turtle in a point `x: 1 y: 1` with its face facing to the `West` will result in a position `x: 0 y: 1` after a move.
+
+**Rotate** rotate the turtle by 90 degrees without changing its position in the board. Example: A turtle facing to the `North` will result in a turtle facing to the `East` after a rotate.
+
 # The stack
 The language I've chosen was Haskell, a strongly typed functional language. Haskell has one of the most powerful type system I know and also a very helpful pattern matching. As I already had written Haskell (in my studies) some time ago, I decided to use it here because of these two features I mentioned before.
 
